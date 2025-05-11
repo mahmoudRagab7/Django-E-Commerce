@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+#products-list img {
+  max-width: 100%;
+  height: auto;
+}
+
+#product-detail img {
+  max-width: 100%;
+  height: auto;
+}

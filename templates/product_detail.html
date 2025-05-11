@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}Product Detail - Ecommerce Ziko{%endblock %} {% block content %}
+<div id="product-detail" class="bg-white p-6 rounded shadow"></div>
+<div class="mt-6">
+  <h3 class="text-xl font-bold mb-4">Add Review</h3>
+  <form id="review-form" class="max-w-md">
+    <div class="mb-4">
+      <label for="rating" class="block text-sm font-medium">Rating (1-5)</label>
+      <input
+        type="number"
+        id="rating"
+        name="rating"
+        min="1"
+        max="5"
+        class="w-full p-2 border rounded"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label for="comment" class="block text-sm font-medium">Comment</label>
+      <textarea
+        id="comment"
+        name="comment"
+        class="w-full p-2 border rounded"
+        required
+      ></textarea>
+    </div>
+    <button
+      type="submit"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Submit Review
+    </button>
+  </form>
+  <p id="review-message" class="mt-4 text-red-600"></p>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", loadProductDetail);
+  document.getElementById("review-form").addEventListener("submit", addReview);
+</script>
+{% endblock %}

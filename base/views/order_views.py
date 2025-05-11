@@ -7,7 +7,6 @@ from rest_framework.response import Response
 from ..models import Order, OrderItem, Product, ShippingAddress
 from ..serializers import OrderSerializer
 
-
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def addOrderItems(request):
@@ -47,7 +46,6 @@ def addOrderItems(request):
     serializer = OrderSerializer(order, many=False)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getOrderById(request, pk):
@@ -63,7 +61,6 @@ def getOrderById(request, pk):
         )
     except Order.DoesNotExist:
         return Response({"detail": "Order not found"}, status=status.HTTP_404_NOT_FOUND)
-
 
 @api_view(["PUT"])
 @permission_classes([IsAuthenticated])
@@ -82,7 +79,6 @@ def updateOrderToPaid(request, pk):
     except Order.DoesNotExist:
         return Response({"detail": "Order not found"}, status=status.HTTP_404_NOT_FOUND)
 
-
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getMyOrders(request):
@@ -91,14 +87,12 @@ def getMyOrders(request):
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 
-
 @api_view(["GET"])
 @permission_classes([IsAdminUser])
 def getAllOrders(request):
     orders = Order.objects.all()
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
-
 
 @api_view(["PUT"])
 @permission_classes([IsAdminUser])

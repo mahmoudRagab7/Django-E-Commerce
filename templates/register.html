@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Register - Ecommerce Ziko{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Register</h2>
+    <form id="register-form" method="post" action="#">
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium">Name</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium">Password</label>
+            <input type="password" id="password" name="password" class="w-full p-2 border rounded" required>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Register</button>
+    </form>
+    <p class="mt-4">Already have an account? <a href="/login/" class="text-blue-600">Login</a></p>
+    <p id="register-message" class="mt-4 text-red-600"></p>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('register-form');
+        if (form) {
+            form.addEventListener('submit', registerUser);
+        } else {
+            console.error('Register form not found');
+        }
+    });
+</script>
+{% endblock %}

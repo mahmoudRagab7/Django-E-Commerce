@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Login - Ecommerce Ziko{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
+    <form id="login-form" method="post" action="#">
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium">Password</label>
+            <input type="password" id="password" name="password" class="w-full p-2 border rounded" required>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</button>
+    </form>
+    <p class="mt-4">Don't have an account? <a href="/register/" class="text-blue-600">Register</a></p>
+    <p id="login-message" class="mt-4 text-red-600"></p>
+</div>
+<script>
+    function initializeLoginForm() {
+        if (typeof loginUser === 'function') {
+            const form = document.getElementById('login-form');
+            if (form) {
+                form.addEventListener('submit', loginUser);
+                console.log('Login form initialized');
+            } else {
+                console.error('Login form not found');
+            }
+        } else {
+            console.log('loginUser function not available yet, retrying in 100ms');
+            setTimeout(initializeLoginForm, 100);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Give scripts.js a moment to load
+        setTimeout(initializeLoginForm, 100);
+    });
+</script>
+{% endblock %}

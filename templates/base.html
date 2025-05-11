@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ecommerce Ziko{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <!-- Load scripts.js first in the head with defer attribute -->
+    <script src="/static/js/scripts.js?v=4" defer></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">Ecommerce Ziko</a>
+            <div>
+                <a href="/products/" class="px-4">Products</a>
+                <a href="/cart/" class="px-4">Cart</a>
+                <a href="/orders/" class="px-4">Orders</a>
+                <span id="auth-links">
+                    <a href="/login/" class="px-4">Login</a>
+                    <a href="/register/" class="px-4">Register</a>
+                </span>
+                <a href="/profile/" class="px-4 hidden" id="profile-link">Profile</a>
+                <button class="px-4 hidden" id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-blue-600 text-white p-4 text-center">
+        <p>© 2025 Ecommerce Ziko. All rights reserved.</p>
+    </footer>
+</body>
+</html>

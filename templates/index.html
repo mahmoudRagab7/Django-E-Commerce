@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %}Home - Ecommerce Ziko{% endblock %}
+{% block content %}
+<div class="text-center">
+  <h1 class="text-4xl font-bold mb-6">Welcome to Ecommerce Ziko</h1>
+  <p class="text-lg mb-4">
+    Explore our products, manage your orders, and update your profile.
+  </p>
+  <div class="space-x-4">
+    <a
+      href="/products/"
+      class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
+      >Shop Now</a
+    >
+    <a
+      href="/register/"
+      class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
+      >Register</a
+    >
+    <a
+      href="/login/"
+      class="bg-gray-600 text-white px-6 py-3 rounded hover:bg-gray-700"
+      >Login</a
+    >
+  </div>
+</div>
+{% endblock %}

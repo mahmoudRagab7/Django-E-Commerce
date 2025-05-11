@@ -1,0 +1,97 @@
+{% extends 'base.html' %} 
+{% block title %}Cart - Ecommerce Ziko{% endblock %}
+{% block content %}
+<div>
+  <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+  <div id="cart-items" class="mb-4"></div>
+  <form id="order-form" class="max-w-md">
+    <div class="mb-4">
+      <label for="paymentMethod" class="block text-sm font-medium">Payment Method</label>
+      <input
+        type="text"
+        id="paymentMethod"
+        name="paymentMethod"
+        class="w-full p-2 border rounded"
+        value="PayPal"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium">Address</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        class="w-full p-2 border rounded"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label for="city" class="block text-sm font-medium">City</label>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        class="w-full p-2 border rounded"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label for="postalCode" class="block text-sm font-medium">Postal Code</label>
+      <input
+        type="text"
+        id="postalCode"
+        name="postalCode"
+        class="w-full p-2 border rounded"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label for="country" class="block text-sm font-medium">Country</label>
+      <input
+        type="text"
+        id="country"
+        name="country"
+        class="w-full p-2 border rounded"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      Place Order
+    </button>
+  </form>
+  <p id="order-message" class="mt-4 text-red-600"></p>
+</div>
+<script>
+  // Wait for both DOM and scripts.js to be loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if loadCart is available
+    if (typeof loadCart === 'function') {
+      loadCart();
+    } else {
+      // If not, wait a bit and try again
+      setTimeout(function() {
+        if (typeof loadCart === 'function') {
+          loadCart();
+        } else {
+          console.error('loadCart function still not available');
+        }
+      }, 200);
+    }
+  });
+
+  // Similarly for placeOrder
+  document.getElementById('order-form').addEventListener('submit', function(e) {
+    if (typeof placeOrder === 'function') {
+      placeOrder(e);
+    } else {
+      e.preventDefault();
+      console.error('placeOrder function not available');
+      document.getElementById('order-message').textContent = 'Error: Please refresh the page';
+    }
+  });
+</script>
+{% endblock %}
